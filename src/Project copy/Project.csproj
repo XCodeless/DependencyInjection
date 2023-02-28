@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <!--<Description>{package description}</Description>
+	  <PackageId>{nuget package name}</PackageId>
+	  <PackageReleaseNotes>{release notes}</PackageReleaseNotes>
+	  <PackageTags>{search tags:1;2;3;}</PackageTags>
+	  <Version>{nuget package version}</Version>
+	  <FileVersion>{file version}</FileVersion>
+	  <AssemblyVersion>{assembly version}</AssemblyVersion>-->
+	  
+  </PropertyGroup>
+
+</Project>

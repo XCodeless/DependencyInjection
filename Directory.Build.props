@@ -1,0 +1,21 @@
+<Project>
+	<Import Project="Directory.Build.Version.props" />
+	<PropertyGroup>
+		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+
+
+
+		<IsPackable>true</IsPackable>
+    	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/XCodeless</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<Copyright>XCodeless, Inc.</Copyright>
+		<Company>XCodeless</Company>
+		<Authors>Sungyow</Authors>
+		
+	</PropertyGroup>
+</Project>
