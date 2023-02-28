@@ -1,4 +1,4 @@
-name: {myProject} unit test
+name: XCodeless.DI unit test
 
 on:
    pull_request:
@@ -14,82 +14,65 @@ jobs:
       
       steps:
       - uses: actions/checkout@v3
-      - name: 🔨 Setup .NET Core 3.1.X SDK
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '3.1.x'
-        
-      - name: 🔨 Setup .NET 5.0.X SDK
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '5.x'
 
       - name: 🔨 Setup .NET 6.X SDK
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.x'
+
+      - name: 🔨 Setup .NET 6.X SDK
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
           
       - name: 🚦 Test
-        run: dotnet test './test/ut/UnitTestProject' -c Release
+        run: dotnet test './test/ut/Runtime.Test' -c Release
      
     windows:
       if: github.event_name == 'pull_request' && github.event.action == 'closed'
       runs-on: windows-latest  
       steps:
-      - uses: actions/checkout@v3
-      - name: 🔨 Setup .NET Core 3.1.X SDK
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '3.1.x'
-        
-      - name: 🔨 Setup .NET 5.0.X SDK
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '5.x'
 
       - name: 🔨 Setup .NET 6.X SDK
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.x'
-    
-      - name: Setup Cover
-        uses: crazy-max/ghaction-chocolatey@v1
-        with: 
-          args: install codecov
-          
-      - name: Restore
-        run: dotnet restore
-      - name: Build
-        run: dotnet build "./test/ut/UnitTestProject" --no-restore
-      - name: 🚦 Test
-        run: dotnet test "./test/ut/UnitTestProject/UnitTestProject.csproj" --no-restore -f net5.0 -c Release --collect:"XPlat Code Coverage" -r ./coverage
 
-      - name: Upload to Codecov
-        uses: codecov/codecov-action@v2
+      - name: 🔨 Setup .NET 6.X SDK
+        uses: actions/setup-dotnet@v2
         with:
-          token: ${{ secrets.COVERAGE_KEY }}
-          directory: ./coverage/
+          dotnet-version: '7.x'    
+
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build --no-restore
+        
+      - name: 🚦 Test
+        run: dotnet test "./test/ut/Runtime.Test" -c Release
    
     mac:
       if: github.event_name == 'pull_request' && github.event.action == 'closed'
       runs-on: macos-latest
             
       steps:
-      - uses: actions/checkout@v3
-      - name: 🔨 Setup .NET Core 3.1.X SDK
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '3.1.x'
-        
-      - name: 🔨 Setup .NET 5.0.X SDK
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '5.x'
 
       - name: 🔨 Setup .NET 6.X SDK
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.x'
+
+      - name: 🔨 Setup .NET 6.X SDK
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.x'
           
       - name: 🚦 Test
-        run: dotnet test './test/ut/UnitTestProject' -c Release
+        run: dotnet test './test/ut/Runtime.Test' -c Release
